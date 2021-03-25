@@ -19,14 +19,12 @@ class TimeandDate extends Component {
 
   componentDidMount() {
     const hr = new Date().getHours();
-    if (hr > 12 && hr < 16) {
-      this.setState({ greet: "Afternoon" });
-    } else if (hr > 16 && hr < 21) {
-      this.setState({ greet: "Evening" });
-    } else if (hr > 21 && hr < 4) {
-      this.setState({ greet: "Night" });
-    } else {
+    if (hr < 12) {
       this.setState({ greet: "Morning" });
+    } else if (hr < 18) {
+      this.setState({ greet: "Afternoon" });
+    } else {
+      this.setState({ greet: "Evening" });
     }
   }
 
