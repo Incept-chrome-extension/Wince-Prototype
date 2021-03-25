@@ -1,0 +1,22 @@
+.head {
+  text-align: right;
+  color: white;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.3),
+    0px -4px 2px rgba(255, 255, 255, 0.3);
+  user-select: none;
+}
+.head_city_icon {
+  padding: 5px;
+}
+.head_city {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.head_city_text {
+  font-size: 20px;
+  font-weight: 300;
+}

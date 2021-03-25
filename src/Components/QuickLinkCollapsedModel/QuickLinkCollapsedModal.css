@@ -1,0 +1,10 @@
+.quicklink__collapsed {
+  text-align: center;
+  padding-top: 10px;
+  transition: 0.5s;
+}
+
+.quicklink__icon__collapsed {
+  padding-left: 3px;
+  transition: 0.5s;
+}

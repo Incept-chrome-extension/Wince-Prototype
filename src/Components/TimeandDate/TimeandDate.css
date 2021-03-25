@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+.time {
+  width: 100%;
+  text-align: center;
+}
+.time__text {
+  color: white;
+  font-size: 160px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+  padding-top: 100px;
+  user-select: none;
+}
+.time__wish {
+  color: white;
+  font-size: 35px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+  user-select: none;
+}
