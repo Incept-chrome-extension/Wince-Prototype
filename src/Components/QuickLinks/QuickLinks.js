@@ -5,6 +5,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import QuickLinkModal from "../QuickLinkModal/QuickLinkModal";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import QuickLinkCollapsedModal from "../QuickLinkCollapsedModel/QuickLinkCollapsedModal";
+import axios from "axios";
 
 class QuickLinks extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class QuickLinks extends Component {
     };
   }
 
+  getFavicon = async (l) => {};
   toggleClasses = () => {
     this.state.collapse
       ? this.setState({
@@ -57,12 +59,27 @@ class QuickLinks extends Component {
     }
     if (/\S/.test(l) && /\S/.test(n)) {
       var fi = "";
+      if (l.indexOf("http://") == 0 || l.indexOf("https://") == 0) {
+        var pathArray = l.split("/");
+        var host = pathArray[2];
+      } else {
+        var pathArray = l.split("/");
+        var host = pathArray[0];
+      }
+      var obj = {};
+      console.log(host);
+      await axios
+        .get("http://favicongrabber.com/api/grab/" + host)
+        .then(async (res) => {
+          console.log(res);
+          fi = res.data.icons[0].src;
+        });
       var obj = {
         name: n,
         link: l,
         favicon: fi,
       };
-      await this.setState((prev) => ({ links: [...prev.links, obj] }));
+      this.setState((prev) => ({ links: [...prev.links, obj] }));
       var v = JSON.stringify(this.state.links);
       localStorage.setItem("quicklinks", v);
     }
@@ -80,21 +97,21 @@ class QuickLinks extends Component {
               <FontAwesomeIcon
                 icon={faBars}
                 className="icon__toggle"
-                size="1x"
+                size="1.5x"
                 onclick
               />
             ) : (
               <FontAwesomeIcon
                 icon={faAngleDoubleLeft}
                 className="icon__toggle"
-                size="1x"
+                size="1.5x"
                 onclick
               />
             )}
           </div>
         </div>
         {this.state.collapse ? (
-          <div className="expanded__links">
+          <div>
             {this.state.links.map((item) => {
               return (
                 <QuickLinkCollapsedModal

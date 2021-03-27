@@ -9,6 +9,7 @@ class QuoteandAuthor extends Component {
     super(props);
     this.state = {
       quote: "",
+      originator: "",
     };
 
     this.changeQuote = this.changeQuote.bind(this);
@@ -30,6 +31,8 @@ class QuoteandAuthor extends Component {
       .request(options)
       .then((res) => {
         this.setState({ quote: '" ' + res.data.content + ' "' });
+        this.setState({ originator: "- " + res.data.originator.name });
+
         localStorage.setItem("quote", res.content);
       })
       .catch(function (error) {
@@ -41,6 +44,8 @@ class QuoteandAuthor extends Component {
     return (
       <div className="quote">
         <p className="quote_line">{this.state.quote}</p>
+        <p className="quote_originator">{this.state.originator}</p>
+        <div></div>
       </div>
     );
   }

@@ -7,4 +7,10 @@
   bottom: 70px;
   left: 50%;
   transform: translate(-50%, 0);
+  font-size: 14px;
+}
+
+.quote_originator {
+  color: white;
+  text-align: right;
 }

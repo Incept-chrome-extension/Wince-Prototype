@@ -8,3 +8,11 @@
   padding-left: 3px;
   transition: 0.5s;
 }
+
+.quciklink__favicon__collapsed {
+  transition: 0.5s;
+  padding-right: 2px;
+  height: 15px;
+  width: 15px;
+  object-fit: contain;
+}

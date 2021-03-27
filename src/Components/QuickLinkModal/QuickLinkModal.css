@@ -14,3 +14,8 @@ a {
   text-decoration: none;
   color: white;
 }
+.quicklink__favicon {
+  height: 15px;
+  width: 15px;
+  object-fit: contain;
+}

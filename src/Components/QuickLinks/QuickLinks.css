@@ -1,5 +1,5 @@
 .ql__expanded {
-  background-color: rgba(18, 18, 18, 0.7);
+  background-color: rgba(1, 1, 1, 0.8);
   color: white;
   position: fixed;
   width: 200px;
@@ -12,10 +12,10 @@
 }
 .ql__collapsed {
   padding-top: 17px;
-  background-color: rgba(18, 18, 18, 0.7);
+  background-color: rgba(1, 1, 1, 0.8);
   color: white;
   position: fixed;
-  width: 40px;
+  width: 60px;
   height: 100vh;
   left: 0;
   top: 0;
@@ -41,10 +41,12 @@
 .ql__list::-webkit-scrollbar {
   display: none;
   transition: 0.5s;
+  transition: 0.5s;
 }
 
 .icon__toggle {
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .ql__head__expanded {
