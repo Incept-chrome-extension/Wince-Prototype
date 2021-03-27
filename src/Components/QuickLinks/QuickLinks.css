@@ -28,7 +28,7 @@
   visibility: hidden;
   width: 0;
   height: 0;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .ql__head__collapsed {
@@ -78,5 +78,5 @@
   border-radius: 10px;
   /* padding-right: 30px; */
   text-align: center;
-  transition: 0.55s;
+  transition: 0.25s;
 }
