@@ -14,7 +14,13 @@ Thank you for your suggestions!
 # How to Contribute?
 
 - Clone this Project to your System
-- Run _npm install_ to install all dependent libraries of the project.
-- Run _npm run-script build_ to create a unpacked build for chrome extension.
-- Run _npm start_ to see how _New Tab_ will look like in chrome tab.
+- Run
+  > npm install
+  > to install all dependent libraries of the project.
+- Run
+  > npm run-script build
+  > to create a unpacked build for chrome extension.
+- Run
+  > npm start
+  > to see how **New Tab** will look like in chrome tab.
 - Go to Extensions in Chrome browser and chose load unpacked after checking developer mode if you had not checked it earlier.
