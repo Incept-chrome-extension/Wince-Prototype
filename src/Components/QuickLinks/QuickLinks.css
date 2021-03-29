@@ -8,7 +8,8 @@
   left: 0;
   top: 0;
   bottom: 0;
-  transition: 0.5s;
+  transition: 0.2s;
+  z-index: 999;
 }
 .ql__collapsed {
   padding-top: 17px;
@@ -21,7 +22,7 @@
   top: 0;
   bottom: 0;
   text-align: center;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 .ql__addlink__collapsed {
   font-size: 0px;
@@ -32,7 +33,7 @@
 }
 
 .ql__head__collapsed {
-  transition: 0.5s;
+  transition: 0.25s;
   padding-top: 17px;
   cursor: pointer;
   padding-bottom: 17px;
@@ -40,13 +41,12 @@
 
 .ql__list::-webkit-scrollbar {
   display: none;
-  transition: 0.5s;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .icon__toggle {
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .ql__head__expanded {
@@ -60,7 +60,7 @@
   padding-bottom: 17px;
   padding-top: 17px;
   z-index: 999;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 .ql__list {
   height: 90vh;
@@ -69,13 +69,13 @@
   position: fixed;
   padding-left: 10px;
   overflow: scroll;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 .ql__addlink__expanded {
   background-color: dodgerblue;
   height: 15px;
   padding: 7px 30px;
-  border-radius: 10px;
+  border-radius: 18px;
   /* padding-right: 30px; */
   text-align: center;
   transition: 0.25s;

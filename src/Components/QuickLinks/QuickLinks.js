@@ -65,6 +65,7 @@ class QuickLinks extends Component {
       } else {
         var pathArray = l.split("/");
         var host = pathArray[0];
+        l = "http://" + l;
       }
       var obj = {};
       console.log(host);
