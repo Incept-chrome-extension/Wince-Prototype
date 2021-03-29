@@ -1,5 +1,6 @@
 import "./TimeandDate.css";
 import React, { Component } from "react";
+import Switch from "react-switch";
 
 class TimeandDate extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class TimeandDate extends Component {
     this.state = {
       date: this.getTime(),
       greet: "",
+      format12: true,
     };
     this.interval = setInterval(this.updateDate, 1000);
   }
@@ -58,6 +60,16 @@ class TimeandDate extends Component {
     return (
       <div className="time">
         <div className="time__text">{this.state.date}</div>
+        <div className="time__format__settings">
+          <p>12 Hr format</p>
+
+          <Switch
+            className="react-switch"
+            onChange={this.handleChange}
+            checked={this.state.checked}
+            required
+          />
+        </div>
         <div className="time__wish">Good {this.state.greet}</div>
       </div>
     );

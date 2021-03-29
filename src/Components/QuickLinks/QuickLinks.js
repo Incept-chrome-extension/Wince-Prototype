@@ -3,9 +3,10 @@ import "./QuickLinks.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import QuickLinkModal from "../QuickLinkModal/QuickLinkModal";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import QuickLinkCollapsedModal from "../QuickLinkCollapsedModel/QuickLinkCollapsedModal";
 import axios from "axios";
+import uniqid from "uniqid";
 
 class QuickLinks extends Component {
   constructor(props) {
@@ -22,10 +23,10 @@ class QuickLinks extends Component {
       ql: "ql__collapsed",
       ql__head: "ql__head__collapsed",
       ql__addlink: "ql__addlink__collapsed",
+      qlti: "ql__toggle__icon__collapsed",
     };
   }
 
-  getFavicon = async (l) => {};
   toggleClasses = () => {
     this.state.collapse
       ? this.setState({
@@ -33,12 +34,14 @@ class QuickLinks extends Component {
           ql: "ql__expanded",
           ql__head: "ql__head__expanded",
           ql__addlink: "ql__addlink__expanded",
+          qlti: "ql__toggle__icon__expanded",
         })
       : this.setState({
           collapse: true,
           ql: "ql__collapsed",
           ql__head: "ql__head__collapsed",
           ql__addlink: "ql__addlink__collapsed",
+          qlti: "ql__toggle__icon__collapsed",
         });
     console.log(this.state);
   };
@@ -67,18 +70,22 @@ class QuickLinks extends Component {
         var host = pathArray[0];
         l = "http://" + l;
       }
-      var obj = {};
-      console.log(host);
+      var newkey = uniqid();
       await axios
         .get("http://favicongrabber.com/api/grab/" + host)
         .then(async (res) => {
-          console.log(res);
-          fi = res.data.icons[0].src;
+          if (res.status == 200) {
+            fi = res.data.icons[0].src;
+          } else fi = "";
+        })
+        .catch(() => {
+          fi = "";
         });
       var obj = {
         name: n,
         link: l,
         favicon: fi,
+        key: newkey,
       };
       this.setState((prev) => ({ links: [...prev.links, obj] }));
       var v = JSON.stringify(this.state.links);
@@ -86,36 +93,43 @@ class QuickLinks extends Component {
     }
   };
 
+  deleteLink = async (e) => {
+    var array = [...this.state.links];
+    for (let i = 0; i < array.length; i++) {
+      if (e == array[i].key) {
+        array.splice(i, 1);
+      }
+    }
+    await this.setState({ links: array });
+    var v = JSON.stringify(this.state.links);
+    localStorage.setItem("quicklinks", v);
+  };
+
   render() {
     return (
       <div className={this.state.ql}>
+        <div className={this.state.qlti} onClick={this.toggleClasses}>
+          {this.state.collapse ? (
+            <FontAwesomeIcon icon={faBars} className="icon__toggle" size="1x" />
+          ) : (
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="icon__toggle"
+              size="1x"
+            />
+          )}
+        </div>
         <div className={this.state.ql__head}>
           <div className={this.state.ql__addlink} onClick={this.addQL}>
             <p>Add Link</p>
           </div>
-          <div className="ql__toggle__icon" onClick={this.toggleClasses}>
-            {this.state.collapse ? (
-              <FontAwesomeIcon
-                icon={faBars}
-                className="icon__toggle"
-                size="1.5x"
-                onclick
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faAngleDoubleLeft}
-                className="icon__toggle"
-                size="1.5x"
-                onclick
-              />
-            )}
-          </div>
         </div>
         {this.state.collapse ? (
-          <div>
+          <div className="ql__list__collapsed">
             {this.state.links.map((item) => {
               return (
                 <QuickLinkCollapsedModal
+                  key={item.key}
                   title={item.name}
                   url={item.link}
                   favicon={item.favicon}
@@ -124,13 +138,15 @@ class QuickLinks extends Component {
             })}
           </div>
         ) : (
-          <div className="ql__list">
+          <div className="ql__list__expanded">
             {this.state.links.map((item) => {
               return (
                 <QuickLinkModal
+                  key={item.key}
                   title={item.name}
                   url={item.link}
                   favicon={item.favicon}
+                  deleteHandler={() => this.deleteLink(item.key)}
                 />
               );
             })}

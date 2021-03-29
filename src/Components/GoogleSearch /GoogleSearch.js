@@ -13,14 +13,14 @@ class GoogleSearch extends Component {
           target="_blank"
         >
           <input
-            autocomplete="on"
+            autoComplete="off"
             className="gs__input"
             name="q"
+            id="gs__ip"
             placeholder="Search"
             required="required"
             type="text"
           />
-          <i class="fab fa-google"></i>
 
           <button className="gs__button" type="submit">
             Search

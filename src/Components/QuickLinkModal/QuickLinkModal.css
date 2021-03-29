@@ -1,10 +1,18 @@
 .quicklink {
   display: flex;
+  justify-content: space-between;
   padding: 10px;
   align-items: center;
   padding-bottom: 5px;
   padding-top: 5px;
   transition: 0.5s;
+}
+.quicklink:hover .delete__icon {
+  visibility: visible;
+  transition: 0.25s;
+}
+.quicklink__content {
+  display: flex;
 }
 .quicklink__icon {
   padding-right: 10px;
@@ -18,4 +26,9 @@ a {
   height: 15px;
   width: 15px;
   object-fit: contain;
+}
+
+.delete__icon {
+  visibility: hidden;
+  transition: 0.25s;
 }

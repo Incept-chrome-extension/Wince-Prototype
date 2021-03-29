@@ -12,6 +12,14 @@
   padding-top: 100px;
   user-select: none;
 }
+.time__format__settings {
+  display: inline;
+  font-size: 12px;
+  color: white;
+}
+.time__format__settings > p {
+  padding: 10px;
+}
 .time__wish {
   color: white;
   font-size: 35px;

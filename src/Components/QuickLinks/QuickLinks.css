@@ -36,10 +36,10 @@
   transition: 0.25s;
   padding-top: 17px;
   cursor: pointer;
-  padding-bottom: 17px;
+  height: 0;
 }
 
-.ql__list::-webkit-scrollbar {
+.ql__list__expanded::-webkit-scrollbar {
   display: none;
   transition: 0.25s;
 }
@@ -47,6 +47,13 @@
 .icon__toggle {
   cursor: pointer;
   transition: 0.25s;
+}
+.ql__toggle__icon__expanded {
+  text-align: right;
+}
+
+.ql__toggle__icon__collapsed {
+  text-align: center;
 }
 
 .ql__head__expanded {
@@ -62,7 +69,7 @@
   z-index: 999;
   transition: 0.25s;
 }
-.ql__list {
+.ql__list__expanded {
   height: 90vh;
   width: 180px;
   margin-top: 60px;
@@ -70,6 +77,9 @@
   padding-left: 10px;
   overflow: scroll;
   transition: 0.25s;
+}
+.ql__list__collapsed {
+  height: 95vh;
 }
 .ql__addlink__expanded {
   background-color: dodgerblue;
