@@ -10,7 +10,7 @@ class TimeandDate extends Component {
     this.state = {
       date: this.getTime(),
       greet: "",
-      format12: true,
+      ampm: "",
     };
     this.interval = setInterval(this.updateDate, 1000);
   }
@@ -39,6 +39,9 @@ class TimeandDate extends Component {
   getTime = () => {
     var today = new Date();
     var h = today.getHours();
+    if (h > 12) {
+      h %= 12;
+    }
     var m = today.getMinutes();
     // add a zero in front of numbers<10
     m = this.checkTime(m);
@@ -46,30 +49,38 @@ class TimeandDate extends Component {
   };
 
   updateDate() {
-    if (new Date().getMinutes() > 9)
-      this.setState({
-        date: new Date().getHours() + ":" + new Date().getMinutes(),
-      });
-    else
-      this.setState({
-        date: new Date().getHours() + ":0" + new Date().getMinutes(),
-      });
+    if (new Date().getHours() <= 12) {
+      if (new Date().getMinutes() > 9)
+        this.setState({
+          date: new Date().getHours() + ":" + new Date().getMinutes(),
+        });
+      else
+        this.setState({
+          date: new Date().getHours() + ":0" + new Date().getMinutes(),
+        });
+
+      this.setState({ ampm: "a.m." });
+    } else {
+      if (new Date().getMinutes() > 9)
+        this.setState({
+          date: (new Date().getHours() % 12) + ":" + new Date().getMinutes(),
+        });
+      else
+        this.setState({
+          date: (new Date().getHours() % 12) + ":0" + new Date().getMinutes(),
+        });
+      this.setState({ ampm: "p.m." });
+    }
   }
 
   render() {
     return (
       <div className="time">
-        <div className="time__text">{this.state.date}</div>
-        <div className="time__format__settings">
-          <p>12 Hr format</p>
-
-          <Switch
-            className="react-switch"
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            required
-          />
+        <div className="time__text">
+          {this.state.date}
+          <span className="time__ampm">{this.state.ampm}</span>
         </div>
+
         <div className="time__wish">Good {this.state.greet}</div>
       </div>
     );

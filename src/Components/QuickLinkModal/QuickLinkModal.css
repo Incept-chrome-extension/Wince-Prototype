@@ -9,7 +9,6 @@
 }
 .quicklink:hover .delete__icon {
   visibility: visible;
-  transition: 0.25s;
 }
 .quicklink__content {
   display: flex;
@@ -30,5 +29,4 @@ a {
 
 .delete__icon {
   visibility: hidden;
-  transition: 0.25s;
 }

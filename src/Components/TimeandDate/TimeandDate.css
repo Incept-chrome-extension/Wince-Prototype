@@ -4,6 +4,7 @@
   text-align: center;
 }
 .time__text {
+  margin-left: 30px;
   color: white;
   font-size: 160px;
   font-weight: 600;
@@ -11,6 +12,9 @@
     0px -4px 10px rgba(255, 255, 255, 0.3);
   padding-top: 100px;
   user-select: none;
+}
+.time__text:hover .time__ampm {
+  visibility: visible;
 }
 .time__format__settings {
   display: inline;
@@ -27,4 +31,13 @@
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
   user-select: none;
+}
+.time__ampm {
+  visibility: hidden;
+  font-size: 20px;
+  width: 0;
+  height: 0;
+}
+span {
+  width: 0;
 }
