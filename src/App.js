@@ -20,13 +20,27 @@ class App extends Component {
   }
 
   changeBg = () => {
+    const arr = [
+      "Mountains",
+      "animals",
+      "Nature",
+      "snow",
+      "alberta",
+      "switzerland",
+      "water",
+      "california",
+      "italy",
+      "view",
+    ];
+    var queryfield = arr[Math.floor(Math.random() * arr.length)];
+    console.log(queryfield);
     const unsplash = createApi({
       accessKey: "tsztW2OvoW1VwddrbuWGkFHgxwzwG7KyIHVRRz98Mks",
     });
 
     unsplash.photos
       .getRandom({
-        query: "view",
+        query: queryfield,
         orientation: "landscape",
         count: 1,
       })
