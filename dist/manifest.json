@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+
+  "name": "Wince",
+  "description": "This extension is a starting point to create a real Chrome extension",
+  "version": "0.0.1",
+
+  "action": {},
+  "chrome_url_overrides": {
+    "newtab": "popup.html"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "permissions": ["geolocation", "storage", "activeTab", "scripting"]
+}
